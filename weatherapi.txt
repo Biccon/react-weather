@@ -1,0 +1,27 @@
+const appid = "27a2181466830267d7ac26415db7e609";
+
+나라, 도시 이름으로 검색/현재날씨
+http://api.openweathermap.org/data/2.5/weather?q=seoul,kr&appid=
+
+AJAX 요청은 componentDidMount 에서 하기
+componentWillMount 안에서 해도 작동하긴 하나 DOM Manipulation 이 불가능
+
+현재 서울의 날씨
+lat,lon (위도,경도)
+q=seoul,kr
+id=아이디
+http://api.openweathermap.org/data/2.5/weather?lat=37.56826&lon=126.977829&APPID=
+http://api.openweathermap.org/data/2.5/weather?q=seoul,kr&appid=
+
+5일간 서울의 예보
+http://api.openweathermap.org/data/2.5/forecast?q=Seoul,kr&appid=27a2181466830267d7ac26415db7e609
+
+서울
+[lat, lon] = [37.5667, 126.9783]
+q = 'seoul,kr'
+id = 1835848
+
+광주
+[lat, lon] = [35.1601, 126.8513]
+q = 'gwangju, kr'
+id = 1841811    
