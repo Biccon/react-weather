@@ -23,6 +23,7 @@ class WeatherCurrent extends Component {
 
   getForecast = () => {
     const id = this.state.city.id;
+    console.log("axios id :", this.state.city.name);
     this.setState({
       loading: true
     });
@@ -32,13 +33,10 @@ class WeatherCurrent extends Component {
       )
       .then(response => {
         const data = response.data;
-        console.log(data);
+        console.log("받은데이터", data);
         this.setState({
-          loading: false
-        });
-
-        this.setState({
-          weather: data.weather
+          loading: false,
+          weather: data.name
         });
       })
       .catch(error => {
@@ -60,8 +58,8 @@ class WeatherCurrent extends Component {
     const { city } = this.props;
     return (
       <div className="weather-current">
-        <li>날씨: {this.state.weather.main}</li>
-        <li>description: {this.state.weather.description}</li>
+        <li>날씨: {this.state.weather} </li>
+        <li>description: {this.state.weather}</li>
       </div>
     );
   }

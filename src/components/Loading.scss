@@ -7,23 +7,58 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
-
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: "Nanum Gothic";
-  animation: loading 1s infinite ease-in-out;
+  background: rgba(0, 0, 0, 0.6);
 
   &.hidden {
-      display: none;
+    display: none;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+
+    position: relative;
+  }
+
+  .double-bounce1,
+  .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #eee;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-bounce 2s infinite ease-in-out;
+    animation: sk-bounce 2s infinite ease-in-out;
+  }
+
+  .double-bounce2 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
   }
 }
 
-@keyframes loading {
-  0% {
-    font-size: 1.5rem;
+@-webkit-keyframes sk-bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
   }
   50% {
-    font-size: 2rem;
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
   }
 }

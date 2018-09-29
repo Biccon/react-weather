@@ -6,7 +6,10 @@ class Loading extends Component {
     const { loading } = this.props;
     return (
       <div className={["loading", loading ? "" : "hidden"].join(" ")}>
-        Loading
+        <div className="spinner">
+          <div className="double-bounce1" />
+          <div className="double-bounce2" />
+        </div>
       </div>
     );
   }
