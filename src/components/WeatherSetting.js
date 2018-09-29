@@ -10,17 +10,27 @@ class WeatherSetting extends Component {
     }
   };
   render() {
-    const { state } = this.props;
+    const { cities, currentIndex, onCityChange } = this.props;
+    const cityChange = e => {
+      const changedIndex = e.target.selectedIndex;
+      onCityChange(changedIndex);
+    };
     return (
       <div className="weather-setting">
-        Setting weather {state.city}
+        <h2>City</h2>
         <div className="setting-city">
-          <select id="city" style={this.style.city}>
-            <option>서울</option>
-            <option>광주</option>
-            <option>부산</option>
+          <select
+            id="city"
+            style={this.style.city}
+            onChange={cityChange}
+            value={currentIndex}
+          >
+            {cities.map((city, i) => (
+              <option value={i} key={i}>
+                {city.name}
+              </option>
+            ))}
           </select>
-          <button>변경</button>
         </div>
       </div>
     );

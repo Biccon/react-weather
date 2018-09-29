@@ -36,10 +36,11 @@ id = 1841811
 
 
 서울 seoul,kr 1835848
-부산 busan, kr 1838524
+부산 busan,kr 1838524
 대구 daegu,kr 1835329
 인천 incheon,kr 1841811
 광주 gwangju,kr 1841811
-대전 daejeon, kr 1835235
-울산 ulsan, kr 1833747
-제주 jeju, kr 1846266
+대전 daejeon,kr 1835235
+울산 ulsan,kr 1833747
+제주 jeju,kr 1846266
+
