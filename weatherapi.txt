@@ -1,7 +1,7 @@
 const appid = "27a2181466830267d7ac26415db7e609";
 
 나라, 도시 이름으로 검색/현재날씨
-http://api.openweathermap.org/data/2.5/weather?q=seoul,kr&appid=
+http://api.openweathermap.org/data/2.5/weather?q=seoul,kr&appid=27a2181466830267d7ac26415db7e609
 
 AJAX 요청은 componentDidMount 에서 하기
 componentWillMount 안에서 해도 작동하긴 하나 DOM Manipulation 이 불가능
@@ -25,3 +25,21 @@ id = 1835848
 [lat, lon] = [35.1601, 126.8513]
 q = 'gwangju, kr'
 id = 1841811    
+
+
+부산
+대구
+인천
+광주
+대전
+울산
+
+
+서울 seoul,kr 1835848
+부산 busan, kr 1838524
+대구 daegu,kr 1835329
+인천 incheon,kr 1841811
+광주 gwangju,kr 1841811
+대전 daejeon, kr 1835235
+울산 ulsan, kr 1833747
+제주 jeju, kr 1846266

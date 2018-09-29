@@ -6,7 +6,7 @@ import "./WeatherWrapper.scss";
 
 class WeatherWrapper extends Component {
   state = {
-    city: "seoul, kr"
+    city: "Seoul, KR"
   };
 
   render() {
