@@ -83,7 +83,7 @@ class WeatherCurrent extends Component {
           <Fragment>
             <div className="weather-view">
               <div className="weather-icon">
-                <div className="icon">
+                <div className="weather">
                   <WeatherIcon icon={weather.weather[0].icon} />
                   <span>{weather.weather[0].main}</span>
                 </div>
