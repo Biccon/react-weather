@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import "./WeatherCurrent.scss";
 import axios from "axios";
 import Loading from "./Loading";
+import WeatherIcon from "./WeatherIcon";
 
 class WeatherCurrent extends Component {
   state = {
@@ -18,25 +19,6 @@ class WeatherCurrent extends Component {
       this.getCurrent(nextProps.city.id);
     }
   }
-  ico = [
-    { no: "01", netural: false, icon: "sunny" },
-    { no: "02", netural: false, icon: "cloudy" },
-    { no: "03", netural: true, icon: "cloud" },
-    { no: "04", netural: true, icon: "cloudy" },
-    { no: "09", netural: false, icon: "rain" },
-    { no: "10", netural: false, icon: "sunny" },
-    { no: "11", netural: false, icon: "sunny" },
-    { no: "13", netural: false, icon: "sunny" },
-    { no: "50", netural: false, icon: "sunny" },
-  ];
-
-  iconParse = icon => {
-    const dayOrNight = icon.substr(2, 1);
-    dayOrNight = dayOrNight === "d" ? "day" : "night";
-    const ico = icon.substr(0, 2);
-
-    return `wi-${dayOrNight}-`;
-  };
 
   getCurrent = id => {
     console.log("getCurrentWeather_city id : ", id);
@@ -54,10 +36,6 @@ class WeatherCurrent extends Component {
         const weather = data["weather"];
         const wind = data["wind"];
         const sys = data["sys"];
-
-        weather.map(w => {
-          w.icon = iconParse(w.icon);
-        });
 
         const newData = {
           name: data["name"],
@@ -92,25 +70,39 @@ class WeatherCurrent extends Component {
   };
 
   render() {
-    const { city } = this.props;
     const { loading, weather } = this.state;
 
     const weatherView = () => {
       if (weather != null) {
         return (
           <Fragment>
-            <h2>{weather.name}</h2>
             <div className="weather-view">
-              <b>
-                {weather.temp.temp} <i className="wi wi-celsius" />
-              </b>
+              <div className="weather-icon">
+                <div className="icon">
+                  <WeatherIcon icon={weather.weather[0].icon} />
+                  <span>{weather.weather[0].main}</span>
+                </div>
+                <div className="temp">
+                  <span className="now">
+                    {weather.temp.temp}
+                    <i className="wi wi-celsius" />
+                  </span>
+                  <span className="low">
+                    {weather.temp.temp_min}
+                    <i className="wi wi-degree" />
+                  </span>
+                  <span className="high">
+                    {weather.temp.temp_max}
+                    <i className="wi wi-degree" />
+                  </span>
+                </div>
+              </div>
             </div>
-            {JSON.stringify(weather)}
           </Fragment>
         );
       } else {
         return (
-          <div>
+          <div className="weather-view">
             <i className="wi wi-na" />
           </div>
         );

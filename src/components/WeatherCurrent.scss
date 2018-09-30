@@ -1,4 +1,66 @@
 .weather-current {
-  background: pink;
   position: relative;
+  .wi-day-sunny {
+    animation: rolling infinite 7s linear;
+  }
+  @keyframes rolling {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .weather-view {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      grid-column: 1/2;
+    }
+    color:white;
+
+    .weather-icon { 
+      .icon {
+        position: relative;
+        font-size: 8rem;
+
+        span {
+          display: block;
+          position: relative;
+          font-size: 2rem;
+          text-align: center;
+          font-weight: 800;
+          letter-spacing: 3px;
+        }
+      }
+      .temp {
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
+        span {
+          font-family: "Nanum Gothic";
+          font-size: 1.2rem;
+          &.now {
+            display: block;
+            font-size: 2rem;
+          }
+          &.low {
+            &:after {
+              content: "℃";
+            }
+          }
+          &.high {
+            &:before {
+              content: " / ";
+            }
+            &:after {
+              content: "℃";
+            }
+          }
+        }
+      }
+    }
+  }
 }
