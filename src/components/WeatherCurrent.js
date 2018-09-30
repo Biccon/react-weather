@@ -55,7 +55,7 @@ class WeatherCurrent extends Component {
         <Loading loading={this.state.loading} />
         <h2>
           Current city is {city.name}
-          <i class="wi wi-celsius"></i>
+          <i class="wi wi-celsius" />
           <button onClick={this.refresh}>Refresh</button>
         </h2>
       </div>
