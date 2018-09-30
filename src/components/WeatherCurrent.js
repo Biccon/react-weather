@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./WeatherCurrent.scss";
 import axios from "axios";
-import Loading from "./Loading"; 
+import Loading from "./Loading";
 
 class WeatherCurrent extends Component {
   state = {
@@ -55,6 +55,7 @@ class WeatherCurrent extends Component {
         <Loading loading={this.state.loading} />
         <h2>
           Current city is {city.name}
+          <i class="wi wi-celsius"></i>
           <button onClick={this.refresh}>Refresh</button>
         </h2>
       </div>
