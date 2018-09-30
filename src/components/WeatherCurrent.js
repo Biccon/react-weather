@@ -3,6 +3,7 @@ import "./WeatherCurrent.scss";
 import axios from "axios";
 import Loading from "./Loading";
 import WeatherIcon from "./WeatherIcon";
+import Moment from "react-moment";
 
 class WeatherCurrent extends Component {
   state = {
@@ -44,16 +45,18 @@ class WeatherCurrent extends Component {
           humidity: main.humidity,
           pressure: main.pressure,
           temp: {
-            temp: this.round(main.temp, 2),
-            temp_max: this.round(main.temp_max, 2),
-            temp_min: this.round(main.temp_min, 2)
+            temp: this.round(main.temp, 1),
+            temp_max: this.round(main.temp_max, 1),
+            temp_min: this.round(main.temp_min, 1)
           },
           clouds: clouds.all,
-          wind: wind,
+          wind: {
+            speed: this.round(wind.speed, 1),
+            deg: this.round(wind.deg, 0)
+          },
           weather: weather,
           sun: { sunrise: sys.sunrise, sunset: sys.sunset }
         };
-        console.log(newData);
         this.setState({
           loading: false,
           weather: newData
@@ -89,12 +92,47 @@ class WeatherCurrent extends Component {
                     {weather.temp.temp}
                     <i className="wi wi-celsius" />
                   </span>
-                  <span className="low">{weather.temp.temp_min}</span>
-                  <span className="high">{weather.temp.temp_max}</span>
+                  <span className="low">
+                    {weather.temp.temp_min}
+                    <i className="wi wi-degrees" />
+                  </span>
+                  <span className="high">
+                    {weather.temp.temp_max}
+                    <i className="wi wi-degrees" />
+                  </span>
                 </div>
               </div>
               <div className="weather-wind">
-              wind
+                <div className="wind-speed">
+                  <i className="wi wi-barometer" />
+                  <span>{weather.wind.speed} ㎧</span>
+                </div>
+                <div className="wind-direction">
+                  <i
+                    className="wi wi-wind-direction"
+                    style={{ transform: `rotate(${weather.wind.deg}deg)` }}
+                  />
+                  <span>
+                    {weather.wind.deg}
+                    <i className="wi wi-degrees" />
+                  </span>
+                </div>
+                <div className="sun-sunrise">
+                  <i className="wi wi-sunrise" />
+                  <span>
+                    <Moment format="HH:mm:ss">
+                      {weather.sun.sunrise * 1000}
+                    </Moment>
+                  </span>
+                </div>
+                <div className="sun-sunset">
+                  <i className="wi wi-sunset" />
+                  <span>
+                    <Moment format="HH:mm:ss">
+                      {weather.sun.sunset * 1000}
+                    </Moment>
+                  </span>
+                </div>
               </div>
             </div>
           </Fragment>
