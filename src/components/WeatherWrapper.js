@@ -9,12 +9,13 @@ class WeatherWrapper extends Component {
     { name: "서울", id: "1835848" },
     { name: "부산", id: "1838524" },
     { name: "대구", id: "1835329" },
-    { name: "인천", id: "1841811" },
+    { name: "인천", id: "1843564" },
     { name: "광주", id: "1841811" },
     { name: "대전", id: "1835235" },
     { name: "울산", id: "1833747" },
     { name: "제주", id: "1846266" }
   ];
+
   state = {
     index: 0 // cities index
   };
@@ -23,7 +24,6 @@ class WeatherWrapper extends Component {
     this.setState({
       index
     });
-    console.log(this.state, index);
   };
 
   render() {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import "./WeatherForecast.scss";
-import axios from "axios";
+import "./WeatherForecast.scss"; 
 import Loading from "./Loading";
 
 class WeatherForecast extends Component {
