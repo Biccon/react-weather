@@ -19,7 +19,9 @@ class WeatherCurrent extends Component {
       this.getCurrent(nextProps.city.id);
     }
   }
-
+  round = (floatNumber, number) => {
+    return Math.round(floatNumber * 10 ** number) / 10 ** number;
+  };
   getCurrent = id => {
     console.log("getCurrentWeather_city id : ", id);
     this.setState({
@@ -42,9 +44,9 @@ class WeatherCurrent extends Component {
           humidity: main.humidity,
           pressure: main.pressure,
           temp: {
-            temp: main.temp,
-            temp_max: main.temp_max,
-            temp_min: main.temp_min
+            temp: this.round(main.temp, 2),
+            temp_max: this.round(main.temp_max, 2),
+            temp_min: this.round(main.temp_min, 2)
           },
           clouds: clouds.all,
           wind: wind,
@@ -87,15 +89,12 @@ class WeatherCurrent extends Component {
                     {weather.temp.temp}
                     <i className="wi wi-celsius" />
                   </span>
-                  <span className="low">
-                    {weather.temp.temp_min}
-                    <i className="wi wi-degree" />
-                  </span>
-                  <span className="high">
-                    {weather.temp.temp_max}
-                    <i className="wi wi-degree" />
-                  </span>
+                  <span className="low">{weather.temp.temp_min}</span>
+                  <span className="high">{weather.temp.temp_max}</span>
                 </div>
+              </div>
+              <div className="weather-wind">
+              wind
               </div>
             </div>
           </Fragment>

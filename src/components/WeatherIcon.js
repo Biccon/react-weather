@@ -1,10 +1,8 @@
-import React, { Component } from "react";
-import "./WeatherIcon.scss";
-
-ico = {
+import React from "react";
+const ico = {
   "01": {
     netural: false,
-    icon: "sunny"
+    icon: "sunny|clear"
   },
   "02": {
     netural: false,
@@ -40,18 +38,21 @@ ico = {
   }
 };
 
-iconParse = icon => {
-  let dayOrNight = icon.substr(2, 1) === "d" ? "day" : "night";
-  const i = this.ico[icon.substr(0, 2)];
-  let icoName = i.netural ? `wi-${i.icon}` : `wi-${dayOrNight}-${i.icon}`;
-  return icoName;
+const iconParse = icon => {
+  let temp = icon.substr(2, 1);
+  let dayOrNight = temp === "d" ? "day" : "night";
+  const i = { ...ico[icon.substr(0, 2)] };
+  if (i.icon.indexOf("|") !== -1) {
+    const iconDayOrNight = i.icon.split("|");
+    i.icon = temp === "d" ? iconDayOrNight[0] : iconDayOrNight[1];
+  }
+  return i.netural ? `wi-${i.icon}` : `wi-${dayOrNight}-${i.icon}`;
 };
 
-class WeatherIcon extends Component {
-  render() {
-    const { icon } = this.props;
-    return <div />;
-  }
-}
+const WeatherIcon = props => {
+  const { icon } = props;
+
+  return <i className={["wi", iconParse(icon)].join(" ")} />;
+};
 
 export default WeatherIcon;

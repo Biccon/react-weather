@@ -11,21 +11,23 @@
       transform: rotate(360deg);
     }
   }
+
   .weather-view {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 8rem;
     h2 {
       grid-column: 1/2;
     }
-    color:white;
+    color: white;
 
-    .weather-icon { 
+    .weather-icon {
       .icon {
         position: relative;
+        text-align: center;
         font-size: 8rem;
-
         span {
           display: block;
           position: relative;
@@ -39,6 +41,7 @@
         margin-top: 10px;
         text-align: center;
         font-weight: bold;
+        font-size: initial;
         span {
           font-family: "Nanum Gothic";
           font-size: 1.2rem;
