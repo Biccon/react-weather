@@ -33,7 +33,7 @@ class WeatherCurrent extends Component {
         `http://api.openweathermap.org/data/2.5/weather?id=${id}&appid=27a2181466830267d7ac26415db7e609&units=metric`
       )
       .then(response => {
-        const data = response.data;
+        const data = response.data; 
         const main = data["main"];
         const clouds = data["clouds"];
         const weather = data["weather"];
@@ -56,7 +56,7 @@ class WeatherCurrent extends Component {
           },
           weather: weather,
           sun: { sunrise: sys.sunrise, sunset: sys.sunset }
-        };
+        }; 
         this.setState({
           loading: false,
           weather: newData

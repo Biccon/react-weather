@@ -1,4 +1,78 @@
 .weather-forecast {
-    display:block; 
-    position:relative;
+  position: relative;
+  .forecast {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    padding: 8px;
+    grid-gap: 8px;
+    grid-template-columns: repeat(5, 1fr);
+    position: relative;
+    color: white;
+
+    .forecast-data {
+      position: relative;
+      display: grid;
+      font-family: "Nanum Gothic", sans-serif;
+      grid-template-rows: auto 1fr;
+
+      .forecast-date {
+        font-size: 1.4rem;
+        margin: 0;
+        padding: 8px 0;
+        text-align: center;
+        box-sizing: border-box;
+        border-bottom: 3px solid white;
+        font-weight: bold;
+      }
+
+      .forecast-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .forecast-weather {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          & > i {
+            font-size: 3rem;
+          }
+          span {
+            font-weight: bold;
+            font-size: 1rem;
+          }
+
+          .temp {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: initial;
+            span {
+              font-family: "Nanum Gothic";
+              font-size: 0.8rem;
+              &.now {
+                display: block;
+                font-size: 1rem;
+              }
+              &.high {
+                &:before {
+                  content: " / ";
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .forecast-na {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    color: white;
+  }
 }

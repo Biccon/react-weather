@@ -17,21 +17,24 @@ class WeatherSetting extends Component {
     };
     return (
       <div className="weather-setting">
-        <h2>City</h2>
-        <div className="setting-city">
-          <select
-            id="city"
-            style={this.style.city}
-            onChange={cityChange}
-            value={currentIndex}
-          >
-            {cities.map((city, i) => (
-              <option value={i} key={i}>
-                {city.name}
-              </option>
-            ))}
-          </select>
+        <div class="dropdown">
+          <div class="select">
+            <span>Select Gender</span>
+            <i class="fa fa-chevron-left" />
+          </div>
+          <input type="hidden" name="gender" />
+          <ul class="dropdown-menu">
+            <li id="male">Male</li>
+            <li id="female">Female</li>
+          </ul>
         </div>
+        <select id="city" onChange={cityChange} value={currentIndex}>
+          {cities.map((city, i) => (
+            <option value={i} key={i}>
+              {city.name}
+            </option>
+          ))}
+        </select>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 .weather-wrapper {
   width: 600px; /* 16:9 21:9 4:3 16:10 */
-  height: 600px;
+  height: 700px;
   position: relative;
   overflow: hidden;
 
@@ -11,5 +11,5 @@
   box-sizing: border-box;
 
   display: grid;
-  grid-template-rows: 1.5fr 6fr 2.5fr;
+  grid-template-rows: 1fr 6fr 3fr;
 }
