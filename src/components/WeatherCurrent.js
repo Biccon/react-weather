@@ -119,18 +119,28 @@ class WeatherCurrent extends Component {
                 </div>
                 <div className="sun-sunrise">
                   <i className="wi wi-sunrise" />
-                  <span>
-                    <Moment format="HH:mm:ss">
-                      {weather.sun.sunrise * 1000}
-                    </Moment>
+                  <span className="time">
+                    <span className="fromNow">
+                      <Moment fromNow>{weather.sun.sunrise * 1000}</Moment>
+                    </span>
+                    <span className="format">
+                      <Moment format="HH:mm:ss">
+                        {weather.sun.sunrise * 1000}
+                      </Moment>
+                    </span>
                   </span>
                 </div>
                 <div className="sun-sunset">
                   <i className="wi wi-sunset" />
-                  <span>
-                    <Moment format="HH:mm:ss">
-                      {weather.sun.sunset * 1000}
-                    </Moment>
+                  <span className="time">
+                    <span className="fromNow">
+                      <Moment fromNow>{weather.sun.sunset * 1000}</Moment>
+                    </span>
+                    <span className="format">
+                      <Moment format="HH:mm:ss">
+                        {weather.sun.sunset * 1000}
+                      </Moment>
+                    </span>
                   </span>
                 </div>
               </div>
