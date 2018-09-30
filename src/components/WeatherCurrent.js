@@ -18,6 +18,25 @@ class WeatherCurrent extends Component {
       this.getCurrent(nextProps.city.id);
     }
   }
+  ico = [
+    { no: "01", netural: false, icon: "sunny" },
+    { no: "02", netural: false, icon: "cloudy" },
+    { no: "03", netural: true, icon: "cloud" },
+    { no: "04", netural: true, icon: "cloudy" },
+    { no: "09", netural: false, icon: "rain" },
+    { no: "10", netural: false, icon: "sunny" },
+    { no: "11", netural: false, icon: "sunny" },
+    { no: "13", netural: false, icon: "sunny" },
+    { no: "50", netural: false, icon: "sunny" },
+  ];
+
+  iconParse = icon => {
+    const dayOrNight = icon.substr(2, 1);
+    dayOrNight = dayOrNight === "d" ? "day" : "night";
+    const ico = icon.substr(0, 2);
+
+    return `wi-${dayOrNight}-`;
+  };
 
   getCurrent = id => {
     console.log("getCurrentWeather_city id : ", id);
@@ -35,6 +54,10 @@ class WeatherCurrent extends Component {
         const weather = data["weather"];
         const wind = data["wind"];
         const sys = data["sys"];
+
+        weather.map(w => {
+          w.icon = iconParse(w.icon);
+        });
 
         const newData = {
           name: data["name"],
@@ -74,13 +97,17 @@ class WeatherCurrent extends Component {
 
     const weatherView = () => {
       if (weather != null) {
-        return <Fragment>
-          <h2>{weather.name}</h2>
-          <div className="weather-view">
-            <b>{weather.temp.temp} <i className="wi wi-celsius"></i></b>
-          </div>
-          {JSON.stringify(weather)}
-        </Fragment>;
+        return (
+          <Fragment>
+            <h2>{weather.name}</h2>
+            <div className="weather-view">
+              <b>
+                {weather.temp.temp} <i className="wi wi-celsius" />
+              </b>
+            </div>
+            {JSON.stringify(weather)}
+          </Fragment>
+        );
       } else {
         return (
           <div>
