@@ -3,35 +3,79 @@ import "./DropdownSelect.scss";
 
 class DropdownSelect extends Component {
   state = {
-    value: ""
+    text: "",
+    value: "",
+    display: false
   };
+
   dropdownClick = e => {
-    const t = e.target;
-    console.log(e);
-    console.log(t);
-    t.parentElement.setAttribute("tabindex", 1);
-    t.parentElement.focus();
-    t.parentElement.classList.toggle("active");
-    t.parentElement.querySelector(".dropdown-menu").slidetoggle(300);
-    e.stopPropagation();
+    const t = document.querySelector(".dropdown");
+    t.setAttribute("tabindex", 1);
+    t.focus();
+    t.querySelector(".dropdown-menu").style.display =
+      t.classList.toggle("active") == true ? "block" : "none";
+    this.setState({
+      display: !this.state.display
+    });
+  };
+  focusOut = e => {
+    const t = document.querySelector(".dropdown");
+    t.classList.remove("active");
+    t.querySelector(".dropdown-menu").style.display = "none";
+    this.setState({
+      display: false
+    });
+  };
+  itemClick = e => {
+    const t = document.querySelector(".dropdown");
+    this.setState(
+      {
+        value: e.target.dataset.value,
+        text: e.target.innerText
+      },
+      () => {
+        t.querySelector("input");
+      }
+    );
+  };
+  changeValue = (text, value) => {
+    this.setState({ text, value });
+  };
+  constructor(props) {
+    super(props);
+    console.log("props:", props.list[0]);
+    this.setState({
+      text: props.list[0],
+      value: 0,
+      display: false
+    });
+  }
+  onChange = (e, func) => {
+    func(e);
   };
   render() {
-    const { name, onChange, list } = this.props;
+    const { text, value, display } = this.state;
+    const { name, handleChange, list } = this.props;
     return (
-      <div class="dropdown">
-        <div class="select" onClick={this.dropdownClick}>
-          <span>{list[0]}</span>
-          <i class="fa fa-chevron-left" />
+      <div
+        className="dropdown"
+        onClick={this.dropdownClick}
+        onBlur={this.focusOut}
+      >
+        <div className="select">
+          <span>{text}</span>
+          <i className="fa fa-chevron-left" />
         </div>
         <input
-          type="hidden"
+          type="text"
+          style={{ display: "none" }}
           name={name}
-          value={this.state.value}
-          onChange={onChange}
+          value={value}
+          onChange={e => this.onChange(e, handleChange)}
         />
-        <ul class="dropdown-menu">
+        <ul className={["dropdown-menu", !display && "hidden"].join(" ")}>
           {list.map((item, i) => (
-            <li key={i} id={item}>
+            <li key={i} data-value={i} onClick={this.itemClick}>
               {item}
             </li>
           ))}

@@ -13,19 +13,20 @@ class WeatherSetting extends Component {
   render() {
     const { cities, currentIndex, onCityChange } = this.props;
     const cityChange = e => {
-      const changedIndex = e.target.selectedIndex;
+      alert('a');
+      console.log(e);
+      const changedIndex = e.target.value;
+      console.log(changedIndex);
       onCityChange(changedIndex);
     };
     return (
       <div className="weather-setting">
         <DropdownSelect
           name="city"
-          onChange={cityChange}
+          handleChange={cityChange}
           value={currentIndex}
           list={cities.map(city => city.name)}
-        >
-          도시선택
-        </DropdownSelect>
+        />
       </div>
     );
   }

@@ -14,7 +14,8 @@ class WeatherWrapper extends Component {
     { name: "인천광역시", id: "1843564" },
     { name: "광주광역시", id: "1841811" },
     { name: "울산광역시", id: "1833747" },
-    { name: "제주특별자치도", id: "1846266" }
+    { name: "제주특별자치도", id: "1846266" },
+    { name: "안산시", id: "3036280" }
   ];
 
   state = {
