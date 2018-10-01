@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./WeatherSetting.scss";
+import DropdownSelect from "./DropdownSelect";
 
 class WeatherSetting extends Component {
   componentDidMount() {}
@@ -17,24 +18,14 @@ class WeatherSetting extends Component {
     };
     return (
       <div className="weather-setting">
-        <div class="dropdown">
-          <div class="select">
-            <span>Select Gender</span>
-            <i class="fa fa-chevron-left" />
-          </div>
-          <input type="hidden" name="gender" />
-          <ul class="dropdown-menu">
-            <li id="male">Male</li>
-            <li id="female">Female</li>
-          </ul>
-        </div>
-        <select id="city" onChange={cityChange} value={currentIndex}>
-          {cities.map((city, i) => (
-            <option value={i} key={i}>
-              {city.name}
-            </option>
-          ))}
-        </select>
+        <DropdownSelect
+          name="city"
+          onChange={cityChange}
+          value={currentIndex}
+          list={cities.map(city => city.name)}
+        >
+          도시선택
+        </DropdownSelect>
       </div>
     );
   }
